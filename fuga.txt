@@ -1,0 +1,179 @@
+*php_53_datetime_dateinterval*[PHP] PHP 5.3 の DateTime オブジェクト関連の便利な新機能
+
+
+また PHP 5.3 ネタですが :)
+
+DateTime オブジェクトにいくつか機能が加わりましたので、紹介したいと思います。
+
+
+** DateInterval
+
+-[http://jp.php.net/manual/ja/class.dateinterval.php:title]
+「絶対的な日付」ではなく、「相対的な日にちの間隔」を表すためのクラスが追加されました。
+
+使い方は簡単で、
++DateIntervalオブジェクトを作成する
++formatで出力する
++DateTimeオブジェクトのメソッドの引数にする
+これくらいしかありません。
+
+
+*** DateInterval オブジェクトの作成
+
+-[http://jp.php.net/manual/ja/dateinterval.construct.php:title]
+-[http://jp.php.net/manual/ja/datetime.sub.php:title]
+
+コンストラクタの引数には、「間隔を表す書式」を与えてやります。
+これは、上の１つ目のリンクには詳しく載っていなくて、実は、DateTimeオブジェクトのマニュアルの引数欄に詳しく書いてあります。
+
+例を出します。
+>|php|
+<?php
+var_dump(new DateInterval("P5Y3M"));
+||<
+>||
+object(DateInterval)#3 (8) {
+  ["y"]=>
+  int(5)
+  ["m"]=>
+  int(3)
+  ["d"]=>
+  int(0)
+  ["h"]=>
+  int(0)
+  ["i"]=>
+  int(0)
+  ["s"]=>
+  int(0)
+  ["invert"]=>
+  int(0)
+  ["days"]=>
+  int(0)
+}
+||<
+
+書式は、
+-Pの後に、年(Y)、月(M)、日(D)
+-Tの後に、時(H)、分(M)、秒(S)
+とい言った感じです。
+
+詳しくはマニュアルに書いてあります。
+>http://jp.php.net/manual/ja/datetime.sub.php:title>
+日付の場合は "P3D"、"P3M"、"P3Y" あるいはそれらを組み合わせた "P2M5D" (Y = 年、M = 月、D = 日) のような形式を使用します。 年・月・日の順でなければなりません。たとえば "P5Y"、"P5M2D"、"P5Y4D" のようになります。 時刻の場合は "T3H"、"T3M"、"T3S" あるいはそれらを組み合わせた "T5H20M" (H = 時、M = 分、S = 秒) のような形式を使用します。 日付・時刻の場合は "P5D2M4YT5H20M" のようにします。 文字 (P や T 以外) の前の数字は、任意の量を指定できます。
+<<
+
+
+*** DateInterval::createFromDateString
+
+-[http://jp.php.net/manual/ja/dateinterval.createfromdatestring.php:title]
+
+これがマニュアルにはあまり詳しく書いてありませんが、strtotime で使える書式のような書き方で、日付の間隔を表現できます。また、このメソッドはstaticにコールして、DateInterval オブジェクトがかえされます。
+
+例を出します：
+>|php|
+<?php
+var_dump(DateInterval::createFromDateString("1 year 5 month 5 seconds")->format("%y年 %mヶ月 %d日 と %h時間 %i分 %s秒 前の話です！"));
+||<
+>||
+string(58) "1年 5ヶ月 0日 と 0時間 0分 5秒 前の話です！"
+||<
+
+いくつか試しましたが、
+-年: year years
+-月: month months
+-日: day days
+-時: hour hours
+-分: min minute minutes
+-秒: sec second seconds (分・秒だけ省略OKかよ！)
+など表現できました。また、1month のように、数字の後ろにスペースが無いものもパースできます。（すべて、 大文字もOK）
+さらに、 「ago」などと着けると、正負を反転させることもできました。
+また、「1 hours 1days」のように、表記の順序も関係ありません。
+
+
+** DateTime::sub と DateTime::diff
+
+さて、DateInterval の話をふまえると、
+-DateTimeオブジェクトの日付を戻す(引く)メソッド
+-2つのDateTimeオブジェクトの差をとるメソッド
+の２つが説明できますので、こちらも適当に例をあげて説明します。
+
+
+*** DateTime::sub
+
+DateTimeオブジェクトから、 DateInterval 分、時間を戻します。
+
+例１：
+>|php|
+<?php
+$now = new DateTime();
+echo $now->format("Y-m-d H:i:s") . "\n";
+echo $now->sub(new DateInterval("P1Y2M3DT4H5M6S"))->format("Y-m-d H:i:s") . "\n";
+||<
+>||
+2009-07-10 05:43:23
+2008-05-07 01:38:17
+||<
+
+例２（createFromDateStringを使う）：
+>|php|
+<?php
+$now = new DateTime();
+echo $now->format("Y-m-d H:i:s") . "\n";
+echo $now->sub(DateInterval::createFromDateString("1 year 2 month 3 days 4 hour 5 minutes 6 second"))->format("Y-m-d H:i:s") . "\n";
+||<
+>||
+2009-07-10 05:44:29
+2008-05-07 01:39:23
+||<
+
+例３（マイナスを指定すると時間は進む。subだからね）：
+>|php|
+<?php
+$now = new DateTime();
+echo $now->format("Y-m-d H:i:s") . "\n";
+$now->sub(DateInterval::createFromDateString("-1 year -2 month"));
+echo $now->format("Y-m-d H:i:s") . "\n";
+||<
+>||
+2009-07-10 05:56:05
+2010-09-10 05:56:05
+||<
+
+
+*** DateTime::diff
+
+こちらは、オブジェクト同士の引き算用みたいなかんじです。
+DateIntervalオブジェクトがかえってきます。
+
+例：
+>|php|
+<?php
+$goodnight = new DateTime("2009-07-15 23:35:10");
+$morning   = new DateTime("2009-07-16 07:40:50");
+echo "昨日は " . $goodnight->format("Y-m-d H:i:s") . "に寝て、\n";
+echo "今朝は " . $morning->format("Y-m-d H:i:s") . "に起きたので、\n";
+echo $goodnight->diff($morning, true)->format("%h時間 %i分 %s秒") . "寝たってことですね。\n";
+||<
+>||
+昨日は 2009-07-15 23:35:10に寝て、
+今朝は 2009-07-16 07:40:50に起きたので、
+8時間 5分 40秒寝たってことですね。
+||<
+
+
+** その他
+
+-なんでDateTimeオブジェクトのformatは % 必要ないのに、DateInterval は % が必要なんですかね？腹立ちますね！
+-5.2と比べ、メソッドがオブジェクトを返してくれるので、メソッドチェーンもやりやすくなりました
+-getTimestamp, setTimestamp により、UNIXタイムスタンプ文字列との相互変換も可能になりました
+-日付の期間を表す DatePeriod なんてクラスもあります（試してないですが。。）
+
+
+** まとめ
+
+-マニュアルも機能も充実してきて、2038年問題もすでに解決されてきているDateTimeオブジェクトを使おう！<span style="font-weight:bold;">もうdate関数なんて古いんだぜ！</span>
+-TimeZoneもちゃんと使うと2倍お得（自分でタイムゾーンの時差計算なんて必要ない！）（今回言及してないけど！）
+
+
+というかんじで、是非DateTimeオブジェクト使ってみてはいかがでしょう :)
+
