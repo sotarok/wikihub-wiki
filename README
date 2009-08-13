@@ -1,7 +1,7 @@
 * Wikihub (wikihub.org) の使い方
 
 
-Wikihub は，Git や Subversion にて文書を管理したいコマンドライン大好きなプログラマーさんたちが，文書を自分にあったやり方で更新しつつ，バージョン管理しつつ，でもウェブでも見たい，という欲張りな要望をかかえているだろうと勝手に判断し，作成された，バージョン管理連携wikiインターフェースです．
+Wikihub は，Git や Subversion にて文書を管理したいコマンドライン大好きなプログラマーさんたちが，文書を自分にあったやり方で更新しつつ，バージョン管理しつつ，でもウェブでも見たい，という欲張りな要望をかかえているだろうと勝手に判断し作成された，バージョン管理連携wikiインターフェースです．
 
 現在クローズドベータとして運営中．
 
@@ -39,10 +39,25 @@ Githubで管理された文書なら設定は簡単です．
 +Post-Receive URLsへ，http://wikihub.org/ping/%wikiname% などとURLを入力して追加する
 +- ここでいう %wikiname% は，Wikihub上に作成した Wikiの名前になります
 
+送信されたPingは順次処理されます．最大1分ほどのタイムラグがあります．気長にお待ちください．
+
 
 ** Wikiの整形
 
 Wiki文書スタイルは現在，はてな記法のみをサポートしています．
 
-- ref. http://hatenadiary.g.hatena.ne.jp/keyword/%E3%81%AF%E3%81%A6%E3%81%AA%E8%A8%98%E6%B3%95%E4%B8%80%E8%A6%A7
+- ref. [http://hatenadiary.g.hatena.ne.jp/keyword/%E3%81%AF%E3%81%A6%E3%81%AA%E8%A8%98%E6%B3%95%E4%B8%80%E8%A6%A7:title=はてな記法一覧]
+
+
+** バグ・不具合など
+
+sotarokまでどうぞ：
+- http://twitter.com/sotarok
+
+
+** 問い合わせ
+
+sotarokまでどうぞ：
+- http://twitter.com/sotarok
+- sotaro.k /at/ gmail.com
 
