@@ -1,0 +1,91 @@
+* Basic認証された、またはローカルからのアクセスを許可する
+
+なんて言ったらいいのかわからないけど、
+-外部からのアクセスは、Basic認証（または、Digest認証など）にした
+-localhost（127.0.0.1）からのアクセスは、認証ナシにしたい
+などという要望があった。
+
+まあ、具体的には、Apache に以下のような設定をしていたら、 munin が server-status をとりにいけません！という状態になってたんだけど。
+>||
+<VirtualHost *:80>
+    ServerName hoge.example.com
+    DocumentRoot /path/to/html
+
+    # 外部からのアクセスは認証が必要
+    <Location />
+        AuthUserFile /path/to/.htpasswd
+        AuthName "Input ID and Password."
+        AuthType Basic
+        require valid-user
+    </Location>
+
+    # munin の設定
+    <Location /server-status>
+        SetHandler server-status
+        Order Deny,Allow
+        Deny from all
+        Allow from 127.0.0.1
+        Allow from localhost
+    </Location>
+</VirtualHost>
+
+ExtendedStatus On
+||<
+
+
+最初は、特定URL以下だけ認証をかけないようにする、とか言う方法を探ったりしてたけど、いや、どうやら、RequireとAllowを and/or 条件にできるということがわかった。
+
+
+** Satisfy ディレクティブ
+
+というわけで、どうすんだ、ってことを調べてて Satisfy ディレクティブなどというものがあることを知った。
+-[http://httpd.apache.org/docs/2.0/mod/core.html#satisfy:title]
+-[http://mm.apache.jp/pipermail/apache-users/2004-August/004429.html:title]
+
+マニュアルに書いてある通りだけど、
+
+>>
+例えば、同じネットワーク上にいる人にはウェブサイトのある部分について 無制限のアクセスを許したいけれど、外のネットワークの人には パスワードを提供させるようにするためには、次のような設定をすることが できます:
+>||
+Require valid-user
+Allow from 192.168.1
+Satisfy Any
+||<
+<<
+ということらしい。
+
+Require と Allow のディレクティブで、
+-Any で or 条件
+-All で and 条件
+にできるんですね。
+
+>||
+<VirtualHost *:80>
+    ServerName hoge.example.com
+    DocumentRoot /path/to/html
+
+    # 外部からのアクセスは認証が必要
+    <Location />
+        AuthUserFile /path/to/.htpasswd
+        AuthName "Input ID and Password."
+        AuthType Basic
+        require valid-user
+    </Location>
+
+    # munin の設定
+    <Location /server-status>
+        SetHandler server-status
+        Order Deny,Allow
+        Deny from all
+        Allow from 127.0.0.1
+        Allow from localhost
+        Satisfy Any
+    </Location>
+</VirtualHost>
+
+ExtendedStatus On
+||<
+
+
+ああ、なんてこった。知ってると知ってるんだけど、知らないと知らないよな、これ、などと思いつつ（適当な感想）、やりたいことが実現できましたとさ。
+
