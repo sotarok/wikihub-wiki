@@ -33,6 +33,28 @@ git://github.com/sotarok/wikihub-wiki.git
 ||<
 などです．
 
+** 対象のファイル
+
+Wikihub上に表示されるファイルは，拡張子が .txt となったファイルまたは README ファイルのどちらかです．
+また，指定されたWikiのトップは，指定したリポジトリの README ファイルを表示します．
+
+*** URL とファイルの対応
+
+簡単のため，
+- Wikihub： http://wikihub.org/wiki/wikihub-wiki
+- リポジトリ：http://github.com/sotarok/wikihub-wiki/tree/master (リポジトリのルートを，REPOSITORY_ROOTとします)
+を用いて解説します．
+
+Wikihub の文書トップ
+- http://wikihub.org/wiki/wikihub-wiki
+-- リポジトリ上の REPOSITORY_ROOT/README ファイルが整形されて表示される
+- http://wikihub.org/wiki/wikihub-wiki/hoge
+-- リポジトリ上の REPOSITORY_ROOT/hoge.txt ファイルが整形されて表示される
+- http://wikihub.org/wiki/wikihub-wiki/hoge/fuga
+-- リポジトリ上の REPOSITORY_ROOT/hoge/fuga.txt ファイルが整形されて表示される
+
+といった具合です．
+
 
 ** Wikiの更新
 
