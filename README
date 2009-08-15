@@ -45,9 +45,8 @@ Wikihub上に表示されるファイルは，拡張子が .txt となったフ�
 - リポジトリ：http://github.com/sotarok/wikihub-wiki/tree/master (リポジトリのルートを，REPOSITORY_ROOTとします)
 を用いて解説します．
 
-Wikihub の文書トップ
 - http://wikihub.org/wiki/wikihub-wiki
--- リポジトリ上の REPOSITORY_ROOT/README ファイルが整形されて表示される
+-- Wikihub の文書トップ: リポジトリ上の REPOSITORY_ROOT/README ファイルが整形されて表示される
 - http://wikihub.org/wiki/wikihub-wiki/hoge
 -- リポジトリ上の REPOSITORY_ROOT/hoge.txt ファイルが整形されて表示される
 - http://wikihub.org/wiki/wikihub-wiki/hoge/fuga
