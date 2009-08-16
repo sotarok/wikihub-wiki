@@ -9,6 +9,11 @@ Wikihub は，Git や Subversion にて文書を管理したいコマンドラ�
 -[http://github.com/sotarok/wikihub-wiki/tree/master]
 
 
+** Wiki更新のイメージ
+
+[http://wikihub.org/wiki/wikihub-wiki/overview.png:image]
+
+
 ** ログイン/ユーザ登録
 
 OpenIDのみ対応しています．
