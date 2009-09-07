@@ -1,4 +1,4 @@
 * Custom Logo
 
 You can display a png file as wiki's log of your wiki.
-Check in the png file named "logo.png", then Wikihub is display the file to the header automatically.
+Check in the png file named "logo.png" to your repository root, then Wikihub is display the file to the header automatically.
