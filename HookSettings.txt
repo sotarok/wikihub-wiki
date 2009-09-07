@@ -1,0 +1,19 @@
+* Hook Setting
+
+** GitHub
+
+If you use GitHub as a wiki repository, it is easy to setup hooking update.
+
++ Go to your repository top page. (ex. https://github.com/sotarok/wikihub-wiki)
++ Go to "Admin" page.
++ Go to "Service" Hooks page.
++ Put the ping URL to "Post-Receive URLs"
++- http://wikihub.org/ping/WIKI_NAME
++- WIKI_NAME is the name you registered to wikihub.org
+
+
+** Subversion
+
+Subversion commit hook is little more complex.
+
+Write later.
