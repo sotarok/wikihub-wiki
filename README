@@ -68,12 +68,14 @@ Githubで管理された文書なら設定は簡単です．
 
 +リポジトリの Admin へアクセスする
 +Service Hooksへアクセス
-+Post-Receive URLsへ，http://wikihub.org/ping/%wikiname% などとURLを入力して追加する
-+- ここでいう %wikiname% は，Wikihub上に作成した Wikiの名前になります
++Post-Receive URLsへ，http://wikihub.org/ping/WIKI_NAME などとURLを入力して追加する
++- ここでいう WIKI_NAME は，Wikihub上に作成した Wikiの名前になります
 
 送信されたPingは順次処理されます．最大1分ほどのタイムラグがあります．気長にお待ちください．
 
 Subversion を使っている場合は少し面倒で，リポジトリのあるサーバで，コミットフックを設定しなければいけません．Post Commit Hook で Ping URL にアクセスするようにしてください．
+
+- see. [[HookSettings]]
 
 
 ** Wikiの整形
