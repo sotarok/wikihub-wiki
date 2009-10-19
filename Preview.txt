@@ -1,0 +1,50 @@
+* プレビュー
+
+記事を push (commit) する前に，ローカルでプレビューしたい場合があるかもしれません．
+WikiHub では， whprev というプレビュー用のコマンドを用意しています．たいしたことはしていませんが，一応それなりのプレビューができるようになっています．
+
+
+** 準備
+
+w3m を利用しています．
+入っていない方は，まずこちらをインストールしてください．
+
+例えば，Debian 系の Linux ならば，
+>||
+% aptitude install w3m
+||<
+
+
+** プレビューコマンドのインストール
+
+[http://openpear.org:title=Openpear] から，PHP のパッケージとして提供されています．
+- [http://openpear.org/package/WikiHub]
+
+また， HatenaSyntax に依存しています．
+- [http://openpear.org/package/HatenaSyntax]
+
+インストールは，以下のように行ってください．既に openpear.org が channel-discover 済みの方は，いくつかの手順が省けるかもしれません．
+>||
+% pear channel-discover openpear.org
+% pear install openpear/hatenasyntax-beta
+% pear install openpear/wikihub
+||<
+
+
+** 使い方
+
+>||
+% whprev path_to_file.txt
+||<
+
+はてな記法をパースし，w3mを使ってプレビューされます．
+
+
+** 注意
+
+- 内部リンクなどは再現されません．（リンク切れになります．万が一うまくリンクされたとしても，リンク先のデータははてな記法がパースされていないことでしょう．）
+- シンタックスハイライトなども再現されません．
+- サイトバーなども再現されません．
+
+あくまではてな記法のパース確認目的で利用する程度でしょう．
+
