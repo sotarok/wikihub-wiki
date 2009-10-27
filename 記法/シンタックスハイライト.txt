@@ -1,0 +1,115 @@
+* シンタックスハイライト
+
+Supported Languages:
+-ABAP
+-Actionscript
+-ADA
+-Apache Log
+-AppleScript
+-APT sources.list
+-ASM (m68k)
+-ASM (pic16)
+-ASM (x86)
+-ASM (z80)
+-ASP
+-AutoIT
+-Backus-Naur form
+-Bash
+-Basic4GL
+-BlitzBasic
+-Brainfuck
+-C
+-C for Macs
+-C#
+-C++
+-C++ (with QT)
+-CAD DCL
+-CadLisp
+-CFDG
+-CIL / MSIL
+-COBOL
+-ColdFusion
+-CSS
+-D
+-Delphi
+-Diff File Format
+-DIV
+-DOS
+-DOT language
+-Eiffel
+-Fortran
+-FourJ's Genero
+-FreeBasic
+-GetText
+-glSlang
+-GML
+-gnuplot
+-Groovy
+-Haskell
+-HQ9+
+-HTML
+-INI (Config Files)
+-Inno
+-INTERCAL
+-IO
+-Java
+-Java 5
+-Javascript
+-KiXtart
+-KLone C & C++
+-LaTeX
+-Lisp
+-LOLcode
+-LotusScript
+-LScript
+-Lua
+-Make
+-mIRC
+-MXML
+-MySQL
+-NSIS
+-Objective C
+-OCaml
+-OpenOffice BASIC
+-Oracle 8 & 11 SQL
+-Pascal
+-Perl
+-PHP
+-Pixel Bender
+-PL/SQL
+-POV-Ray
+-PowerShell
+-Progress (OpenEdge ABL)
+-Prolog
+-ProvideX
+-Python
+-Q(uick)BASIC
+-robots.txt
+-Ruby
+-Ruby on Rails
+-SAS
+-Scala
+-Scheme
+-Scilab
+-SDLBasic
+-Smalltalk
+-Smarty
+-SQL
+-T-SQL
+-TCL
+-thinBasic
+-TypoScript
+-Uno IDL
+-VB.NET
+-Verilog
+-VHDL
+-VIM Script
+-Visual BASIC
+-Visual Fox Pro
+-Visual Prolog
+-Whitespace
+-Winbatch
+-Windows Registry Files
+-X++
+-XML
+-Xorg.conf
