@@ -1,5 +1,7 @@
 * Hook Setting
 
+ * You can know your ping URL in the manage page of your wiki.
+
 ** GitHub
 
 If you use GitHub as a wiki repository, it is easy to setup hooking update.
@@ -8,8 +10,21 @@ If you use GitHub as a wiki repository, it is easy to setup hooking update.
 + Go to "Admin" page.
 + Go to "Service Hooks" page.
 + Put the ping URL to "Post-Receive URLs"
-+- http://wikihub.org/ping/WIKI_NAME
++- http://wikihub.org/ping/WIKI_NAME?token=yourtoken
 +- WIKI_NAME is the name you registered to wikihub.org
+
+[http://wikihub.org/wiki/wikihub-wiki/github.png:image]
+
+
+** Bitbucket
+
++ Go to your repository top page.
++ Go to "Admin" page.
++ Go to "Services" page which link is in "Additional options/settings".
++ Click "Add service" button in "Services Administration"
++ Put the ping URL to "URL" field and "Save settings"
+
+[http://wikihub.org/wiki/wikihub-wiki/bitbucket.png:image]
 
 
 ** Subversion
