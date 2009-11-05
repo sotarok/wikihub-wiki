@@ -13,7 +13,7 @@ If you use GitHub as a wiki repository, it is easy to setup hooking update.
 +- http://wikihub.org/ping/WIKI_NAME?token=yourtoken
 +- WIKI_NAME is the name you registered to wikihub.org
 
-[http://wikihub.org/wiki/wikihub-wiki/github.png:image]
+[http://content.screencast.com/users/sotarok/folders/Jing/media/06dacaca-057f-4f2c-9cfb-5d9f8eb2c5e2/00000026.png:image]
 
 
 ** Bitbucket
@@ -24,7 +24,7 @@ If you use GitHub as a wiki repository, it is easy to setup hooking update.
 + Click "Add service" button in "Services Administration"
 + Put the ping URL to "URL" field and "Save settings"
 
-[http://wikihub.org/wiki/wikihub-wiki/bitbucket.png:image]
+[http://content.screencast.com/users/sotarok/folders/Jing/media/9d5c7da1-745e-4a88-87f2-988fd7113dea/00000025.png:image]
 
 
 ** Subversion
