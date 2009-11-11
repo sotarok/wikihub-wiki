@@ -28,7 +28,7 @@ Wikihub では現在，Wiki 整形記法のために，はてなダイアリー�
 wiki 内でリンクを張りたい場合，はてなキーワードリンク記法の [][[ ]][] を利用します．wikiのトップページからの相対的なパスを指定してください．
 - 例：
 -- http://wikihub.org/wiki/wikihub-wiki から，http://wikihub.org/wiki/wikihub-wiki/記法/はてな記法 にリンクを張りたい場合
--- [][[記法/はてな記法]][]
+-- [][[Syntax/HatenaSyntax]][]
 
 *** サポートしていない記法
 

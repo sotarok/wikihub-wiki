@@ -4,6 +4,7 @@ HookSettings=フック設定
 BugReport=バグ・不具合報告
 Logo=ロゴ設定
 Preview=プレビュー機能
+TocSetting=ページに表示用のタイトルをつける
 Syntax/=記法
 Syntax/HatenaSyntax=はてな記法
 Syntax/SyntaxHighlighting=シンタックスハイライト
