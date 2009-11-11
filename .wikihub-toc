@@ -1,0 +1,19 @@
+[ja_JP]
+CHANGES=変更履歴
+HookSettings=フック設定
+BugReport=バグ・不具合報告
+Logo=ロゴ設定
+Preview=プレビュー機能
+Syntax/=記法
+Syntax/HatenaSyntax=はてな記法
+Syntax/SyntaxHighlighting=シンタックスハイライト
+
+[en]
+CHANGES=CHANGES
+HookSettings=Hook Setting
+BugReport=Bug Report
+Logo=Custom Logo Setting
+Preview=Preview in local
+Syntax/=記法
+Syntax/HatenaSyntax=Hatena Syntax
+Syntax/SyntaxHighlighting=Syntax Highlighting
